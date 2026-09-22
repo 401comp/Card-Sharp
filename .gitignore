@@ -1,0 +1,19 @@
+# macOS / Finder
+.DS_Store
+
+# Python bytecode and virtual environments
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Packaging output
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Local application data
+*.sqlite
+*.sqlite-journal
+prefs.json
