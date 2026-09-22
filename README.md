@@ -1,6 +1,6 @@
 # Card-Sharp
 
-A blackjack basic-strategy trainer for macOS. Deal real hands against a live dealer, and after every hand see exactly where your play deviated from perfect basic strategy — with the correct move for each decision, given the current rule set.
+A blackjack basic-strategy trainer for macOS. Play simulated hands against the built-in dealer, and after every hand see exactly where your play deviated from perfect basic strategy — with the correct move for each decision, given the current rule set. Card-Sharp is offline practice software; it does not connect to a live dealer, casino, or gambling service.
 
 ## A real, finite shoe — not random cards
 
