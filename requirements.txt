@@ -1,0 +1,4 @@
+# Build-time dependencies only. End users download Card-Sharp.app in the
+# release ZIP; they do not need Python, Homebrew, or pip.
+py2app
+pillow

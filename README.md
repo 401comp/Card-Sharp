@@ -39,19 +39,24 @@ Ships with editable presets for **Foxwoods**, **Mohegan Sun**, **Bally Twin Rive
 
 > These are **best-estimate** rules that vary by pit, table minimum, and time. The Atlantic City profiles start from the common 8D/S17/DAS/late-surrender rule package, while Ocean publishes both 6D/8D and S17/H17 tables. The Rules dialog lets you correct any field and save it as a custom preset.
 
-## Requirements
+## Download and play
 
-- macOS 10.15+
-- Homebrew Python 3.11+ (`brew install python`). **Not** miniconda — py2app doesn't work with it.
+- Download **Card-Sharp.zip** from the latest GitHub release, unzip it, and move **Card-Sharp.app** to Applications.
+- Requires macOS 10.15 or later.
+- The download is self-contained: no Homebrew, Python, `pip`, account, or network connection is required to play.
+
+> macOS may show a first-launch warning because the app is independently packaged, not notarized through the Mac App Store. Control-click the app, choose **Open**, then confirm once.
 
 ## Run from source (development)
 
 ```bash
-/usr/local/opt/python@3.14/bin/python3.14 -m venv venv
+python3 -m venv venv
 source venv/bin/activate
-pip install pillow          # only for icon generation
+pip install -r requirements.txt
 python -m card_sharp.main
 ```
+
+`requirements.txt` is only for developers building from source; it is not needed to run the release app.
 
 ## Build .app
 
@@ -61,8 +66,8 @@ open dist/Card-Sharp.app
 ```
 
 `build.sh` will:
-1. Create a fresh venv with the correct Homebrew Python
-2. Install `py2app` and `pillow`
+1. Create a fresh venv with a macOS framework Python
+2. Install the build dependencies from `requirements.txt`
 3. Regenerate the icon
 4. Run self-tests
 5. Build the `.app` in `dist/`

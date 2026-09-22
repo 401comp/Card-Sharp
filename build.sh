@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build Card-Sharp .app locally from source.
-# Requires: Homebrew Python (brew install python) — NOT miniconda.
+# Requires: a macOS framework Python (python.org preferred) — NOT miniconda.
 #
 # Usage:
 #   ./build.sh            # build .app in dist/
@@ -31,7 +31,7 @@ echo ">> Python: $BREW_PY ($($BREW_PY --version))"
 if $BREW_PY -c "import sys; sys.exit(0 if 'conda' not in sys.prefix.lower() else 1)"; then
   :
 else
-  echo "!! Refusing to build with conda Python (py2app breaks). Install Homebrew python."
+  echo "!! Refusing to build with conda Python (py2app breaks). Install a python.org framework Python."
   exit 1
 fi
 
@@ -39,7 +39,7 @@ echo ">> Creating venv"
 $BREW_PY -m venv venv
 source venv/bin/activate
 python -m pip install --upgrade pip wheel setuptools >/dev/null
-python -m pip install py2app pillow >/dev/null
+python -m pip install -r requirements.txt >/dev/null
 
 echo ">> Regenerating icon"
 python assets/make_icon.py
