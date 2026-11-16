@@ -10,16 +10,10 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 APP_NAME="Card-Sharp"
-# Prefer python.org's framework Python (bundles the mature Tcl/Tk 8.6.x).
-# Homebrew's python-tk formula can silently ship Tk 9.0.x, whose
-# early-release Cocoa backend drops single clicks on native window-chrome
-# controls (minimize button, title bar) — see tk-macos-common-mistakes
-# section 5.
-BREW_PY="/Library/Frameworks/Python.framework/Versions/3.13/bin/python3"
-[ -x "$BREW_PY" ] || BREW_PY="/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
-[ -x "$BREW_PY" ] || BREW_PY="/usr/local/opt/python@3.14/bin/python3.14"
-[ -x "$BREW_PY" ] || BREW_PY="/opt/homebrew/opt/python@3.14/bin/python3.14"
-[ -x "$BREW_PY" ] || BREW_PY="$(command -v python3)"
+# Use python.org's framework Python, which bundles the mature Tcl/Tk 8.6.x.
+PYTHON_BIN="/Library/Frameworks/Python.framework/Versions/3.13/bin/python3"
+[ -x "$PYTHON_BIN" ] || PYTHON_BIN="/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
+[ -x "$PYTHON_BIN" ] || PYTHON_BIN="$(command -v python3)"
 
 if [[ "${1:-}" == "clean" ]]; then
   rm -rf build dist venv .eggs *.egg-info
@@ -27,8 +21,8 @@ if [[ "${1:-}" == "clean" ]]; then
   exit 0
 fi
 
-echo ">> Python: $BREW_PY ($($BREW_PY --version))"
-if $BREW_PY -c "import sys; sys.exit(0 if 'conda' not in sys.prefix.lower() else 1)"; then
+echo ">> Python: $PYTHON_BIN ($($PYTHON_BIN --version))"
+if $PYTHON_BIN -c "import sys; sys.exit(0 if 'conda' not in sys.prefix.lower() else 1)"; then
   :
 else
   echo "!! Refusing to build with conda Python (py2app breaks). Install a python.org framework Python."
@@ -36,7 +30,7 @@ else
 fi
 
 echo ">> Creating venv"
-$BREW_PY -m venv venv
+$PYTHON_BIN -m venv venv
 source venv/bin/activate
 python -m pip install --upgrade pip wheel setuptools >/dev/null
 python -m pip install -r requirements.txt >/dev/null

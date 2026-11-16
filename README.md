@@ -43,7 +43,7 @@ Ships with editable presets for **Foxwoods**, **Mohegan Sun**, **Bally Twin Rive
 
 - Download **Card-Sharp.zip** from the latest GitHub release, unzip it, and move **Card-Sharp.app** to Applications.
 - Requires macOS 10.15 or later.
-- The download is self-contained: no Homebrew, Python, `pip`, account, or network connection is required to play.
+- The download is self-contained: no development tooling, account, or network connection is required to play.
 
 > macOS may show a first-launch warning because the app is independently packaged, not notarized through the Mac App Store. Control-click the app, choose **Open**, then confirm once.
 
@@ -71,7 +71,7 @@ open dist/Card-Sharp.app
 3. Regenerate the icon
 4. Run self-tests
 5. Build the `.app` in `dist/`
-6. Run `otool -L` on the binary so you can spot Homebrew-only dylibs
+6. Run `otool -L` on the binary so you can spot external library links
 
 ## Self-test
 
