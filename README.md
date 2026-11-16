@@ -89,3 +89,8 @@ Covers hand totals, shoe reshuffle at the cut card, one full round, blackjack pa
 ## Version
 
 0.6.0 — visual table refresh, Auto Deal, expanded casino presets, and portable app zip.
+## Support
+
+Found a problem? [Report it on GitHub](https://github.com/401comp/Card-Sharp/issues/new?template=bug_report.md).
+Please include the app version and your macOS version, but never include private
+data.
